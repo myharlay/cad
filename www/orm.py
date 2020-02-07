@@ -11,9 +11,9 @@ async def create_pool(loop, **kw):
     __pool = await aiomysql.create_pool(
         host=kw.get('host', 'localhost'),
         port=kw.get('port', 3306),
-        user=kw['jhh'],
-        password=kw['790828'],
-        db=kw['MySQL56'],
+        user=kw['user'],
+        password=kw['password'],
+        db=kw['db'],
         charset=kw.get('charset', 'uft8'),
         autocommit=kw.get('autocommit', True),
         maxsize=kw.get('maxsize', 10),
@@ -247,7 +247,6 @@ class Model(dict):
         rows = await execute(self.__delete__, args)
         if rows != 1:
             logging.warn('failed to remove by primary key: affected rows: %s' % rows)
-
 
 
 
